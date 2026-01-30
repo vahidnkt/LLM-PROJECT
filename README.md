@@ -1,6 +1,6 @@
-# Fari GPT
+# Vahi GPT
 
-A modern, AI-powered GPT assistant built with Next.js and OpenAI. Fari GPT provides an intuitive chat interface for seamless AI conversations with advanced features like markdown support, attachments, and a beautiful UI.
+A modern, AI-powered GPT assistant built with Next.js and Groq. Vahi GPT provides an intuitive chat interface for seamless AI conversations with advanced features like markdown support, attachments, and a beautiful UI.
 
 ## Getting Started
 

@@ -3,6 +3,7 @@ import { MessagesSquare } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -26,7 +27,7 @@ export function ThreadListSidebar({
                 </div>
                 <div className="aui-sidebar-header-heading mr-6 flex flex-col gap-0.5 leading-none">
                   <span className="aui-sidebar-header-title font-semibold">
-                    Fari GPT
+                    Vahi GPT
                   </span>
                 </div>
               </SidebarMenuButton>
@@ -38,6 +39,21 @@ export function ThreadListSidebar({
         <ThreadList />
       </SidebarContent>
       <SidebarRail />
+      <SidebarFooter className="aui-sidebar-footer border-t">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg">
+              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                <span className="text-lg font-bold">V</span>
+              </div>
+              <div className="flex flex-col gap-0.5 leading-none">
+                <span className="font-semibold">Vahi GPT</span>
+                <span className="text-xs text-muted-foreground">v1.0.0</span>
+              </div>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }

@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Fari GPT",
+  title: "Vahi GPT",
   description: "A modern AI-powered GPT assistant",
 };
 
