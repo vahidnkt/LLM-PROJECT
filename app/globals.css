@@ -153,18 +153,20 @@
   mix-blend-mode: normal;
 }
 
-::view-transition-old(root) {
-  z-index: 1;
-}
-
+/* When going from light to dark: new theme (dark) appears on top */
 ::view-transition-new(root) {
   z-index: 999;
 }
 
-.dark::view-transition-old(root) {
-  z-index: 999;
+::view-transition-old(root) {
+  z-index: 1;
 }
 
-.dark::view-transition-new(root) {
+/* This ensures both light→dark and dark→light have ripple effect */
+:root.dark::view-transition-old(root) {
   z-index: 1;
+}
+
+:root.dark::view-transition-new(root) {
+  z-index: 999;
 }
