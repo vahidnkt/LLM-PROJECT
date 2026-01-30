@@ -13,6 +13,49 @@ export function ThemeToggle() {
     setMounted(true);
   }, []);
 
+  const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+
+    // Check if View Transitions API is supported
+    if (!document.startViewTransition) {
+      setTheme(newTheme);
+      return;
+    }
+
+    // Get click position for ripple effect
+    const x = event.clientX;
+    const y = event.clientY;
+
+    // Calculate radius for ripple to cover whole screen
+    const endRadius = Math.hypot(
+      Math.max(x, innerWidth - x),
+      Math.max(y, innerHeight - y)
+    );
+
+    // Start view transition with ripple animation
+    const transition = document.startViewTransition(() => {
+      setTheme(newTheme);
+    });
+
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ];
+
+      document.documentElement.animate(
+        {
+          clipPath: clipPath,
+        },
+        {
+          duration: 500,
+          easing: "ease-in-out",
+          pseudoElement: "::view-transition-new(root)",
+        }
+      );
+    });
+  };
+
   if (!mounted) {
     return (
       <Button variant="ghost" size="icon" className="size-9">
@@ -25,7 +68,7 @@ export function ThemeToggle() {
     <Button
       variant="ghost"
       size="icon"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={toggleTheme}
       className="size-9"
     >
       {theme === "dark" ? (
