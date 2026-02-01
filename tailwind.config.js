@@ -67,11 +67,21 @@ module.exports = {
           from: { backgroundPosition: '150% 0' },
           to: { backgroundPosition: '-100% 0' },
         },
+        'collapsible-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-collapsible-content-height)' },
+        },
+        'collapsible-up': {
+          from: { height: 'var(--radix-collapsible-content-height)' },
+          to: { height: '0' },
+        },
       },
       animation: {
         shimmer: 'shimmer-sweep var(--shimmer-duration, 1000ms) linear infinite both',
+        'collapsible-down': 'collapsible-down 0.2s ease-out',
+        'collapsible-up': 'collapsible-up 0.2s ease-out',
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 }
